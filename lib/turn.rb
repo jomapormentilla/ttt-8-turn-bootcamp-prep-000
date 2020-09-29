@@ -9,9 +9,10 @@ end
 def turn(board)
   puts "Please enter 1-9:"
   input = gets.strip
-  
-  if(input.to_i.between?(1, 9))
-    move(board, input, "X")
+  index = input.to_i - 1 
+
+  if(valid_move?(board, index))
+    move(board, index, "X")
   else
     turn(board)
   end
@@ -25,8 +26,7 @@ def valid_move?(board, index)
   end
 end
 
-def move(board, input, player="X")
-  index = input.to_i - 1
+def move(board, index, player="X")
   board[index] = player
   display_board(board)
 end
